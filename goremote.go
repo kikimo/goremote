@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"path"
 
 	"golang.org/x/crypto/ssh"
 )
@@ -89,6 +91,10 @@ func (b *SSHClientBuilder) WithUser(user string) *SSHClientBuilder {
 func (b *SSHClientBuilder) Build() (*SSHClient, error) {
 	if b.host == "" {
 		return nil, fmt.Errorf("ssh host cannot be empty")
+	}
+
+	if len(b.key) == 0 && b.keyPath == "" {
+		b.keyPath = path.Join(os.Getenv("HOME"), ".ssh", "id_rsa")
 	}
 
 	if b.keyPath != "" {

@@ -17,10 +17,9 @@ func main() {
 	// user := "root"
 	// port := 22
 	host := "192.168.15.12"
-	privKeyFile := "/Users/wenlinwu/.ssh/id_rsa"
 	password := ""
 	builder := goremote.NewSSHClientBuilder()
-	client, err := builder.WithPrivateKeyPath(privKeyFile).WithHost(host).WithKeyPass(password).Build()
+	client, err := builder.WithHost(host).WithKeyPass(password).Build()
 	if err != nil {
 		panic(err)
 	}
