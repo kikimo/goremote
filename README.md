@@ -2,7 +2,13 @@
 
 golang implementation of remote execution base on ssh.
 
-example:
+## Install
+
+```txt
+$ go get -u  github.com/kikimo/goremote
+```
+
+## Usage
 
 ```go
 package main
